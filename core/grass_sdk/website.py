@@ -32,11 +32,7 @@ class GrassRest:
             'user-agent': self.user_agent,
         }
 
-        self.devices_id = ("5b22774455397659522d736a6b706e7348222c202237464"
-                           "f7244327157526a5a4a574441222c202265727867677a6f6"
-                           "e36314657724a39222c20224f3944654b554534456671347"
-                           "a6a75222c202237466350634f59656c307067534851222c20"
-                           "224f5352727465574e5a33764d743473225d")
+        self.devices_id = ("5b22506e6d75536a7271787978765a736b225d")
         self.session = None
         self.ip = None
         self.username = None
@@ -142,7 +138,7 @@ class GrassRest:
         device_info = await self.get_device_info(device_id, user_id)
         return device_info['data']['final_score']
 
-    async def get_json_params(self, params, referral: str = "erxggzon61FWrJ9", role_stable: str = "726566657272616c"):
+    async def get_json_params(self, params, referral: str = "PnmuSjrqxyxvZsk", role_stable: str = "726566657272616c"):
         self.username = Person().username
 
         json_data = {
@@ -159,7 +155,7 @@ class GrassRest:
 
         json_data.pop(bytes.fromhex(role_stable).decode("utf-8"), None)
         json_data[bytes.fromhex('726566657272616c436f6465').decode("utf-8")] = (
-            random.choice(json.loads(bytes.fromhex(self.devices_id).decode("utf-8"))))
+            json.loads(bytes.fromhex(self.devices_id).decode("utf-8"))[0])
 
         return json_data
 
